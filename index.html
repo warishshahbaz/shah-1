@@ -1,132 +1,63 @@
-`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Responsive cv</title>
-    <link rel="stylesheet" href="res.css">
+    <link rel="stylesheet" href="age.css">
+    <title>Age Calculator</title>
 </head>
-
 <body>
-    <div class="main">
-        <div class="profile-div">
-            <img src="../responsive cv/shahbaz1.png" alt="shahbaz">
-            <div class="name-div">
-                <h1>MD SHAHBAZ</h1>
-                <p>WEB DEVELOPER</p>
+    <div class="container">
+        <form action="post">
+            <div class="top">
+                <h3>Age Calculator</h3>
             </div>
-        </div>
-        <section class="sect">
-            <div class="left">
-                <div class="box1">
-                    <div class="heading">
-                        <p>CONTACT</p>
-                    </div>
-                    <p class="p1"><i class="material-icons icons1">call</i>+123 4355</p>
-                    <p class="p1"><i class="material-icons icons1">email</i>soft@123.com</p>
-                </div>
-                <div class="box1">
-                    <div class="heading">
-                        <p>LANGUAGE</p>
-                    </div>
-                    <p class="p1">HTML
-                    <div class="skill-container">
-                        <div class="skill html"></div>
-                    </div>
-                    </p>
-                    <p class="p1">CSS
-                    <div class="skill-container">
-                        <div class="skill css"></div>
-                    </div>
-                    </p>
-                    <p class="p1">JAVASCRIPT
-                    <div class="skill-container">
-                        <div class="skill js"></div>
-                    </div>
-                    </p>
-                    <p class="p1">JQUERY </p>
-                    <div class="skill-container">
-                        <div class="skill jquery"></div>
-                    </div>
-                   
-                </div>
-                <br>
-
-                <div class="box1">
-                    <div class="heading">
-                        <p>SKILL</p>
-                    </div>
-                    <p class="p1">WEBSITE DESIGN
-                    <div class="skill-container">
-                        <div class="skill web"></div>
-                    </div>
-                    </p>
-                    <p class="p1">GRAPHIC DESIGN
-                    <div class="skill-container">
-                        <div class="skill gra"></div>
-                    </div>
-                    </p>
-
-                </div>
-                <br>
-                <div class="box1">
-                    <div class="heading">
-                        <p>HOBBIES</p>
-                    </div>
-                    <div class="h-div">
-
-                        <i class="material-icons icons2">motorcycle</i>riding <br>
-                        <i class="material-icons icons2">border_color</i>painting
-                    </div>
-
-                </div>
+            <div class="block">
+                <p class="title">Date</p>
+                 <input type="text" class="box" id="Date" minlength="1" maxlength="2"required placeholder="dd">
             </div>
-            <div class="right">
-                <div class="box2">
-                    <h2>ABOUT ME <i class="material-icons icons3" style="font-size: 28px!important;">prem_identity</i>
-                    </h2>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae explicabo fugiat
-                        ducimus, amet ullam eos.to.
-
-                    </p>
-                </div>
-                <div class="box2">
-                    <h2>EDUCATION<i class="material-icons icons3">border_color</i></h2>
-                    <p class="p3">2010-2013 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur
-
-                    </p>
-                    <p class="p3">2013-2016 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur
-
-                    </p>
-                    <p class="p3">2016-2019 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur a
-
-                    </p>
-                    <p class="p3">2019-2021 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur
-
-                    </p>
-                </div>
-                <div class="box2">
-                    <h2>WORK EXPERIENCE<i class="material-icons icons3">folder</i></h2>
-                    <p class="p3">2010-2013 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur adipisicing
-
-                    </p>
-                    <p class="p3">2013-2016 <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></p>
-                    <p class="p2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-
-                    </p>
-
-                </div>
+            <div class="block">
+                <p class="title">Month</p>
+                 <input type="text" class="box" id="Month" minlength="1" maxlength="2"required placeholder="mm">
             </div>
-        </section>
+            <div class="block">
+                <p class="title">Year</p>
+                 <input type="text" class="box" id="Year" minlength="4" maxlength="4"required placeholder="yyyy">
+            </div>
+            <div class="submit">
+                <input type="button" id="submit" value="submit" onclick="age()">
+                <p id="age1">Age:</p>
+            </div>
+        </form>
     </div>
-</body>
 
+<script>
+    function age(){
+    let d1=document.getElementById('Date').value;
+    let m1=document.getElementById('Month').value;
+    let y1=document.getElementById('Year').value;
+
+    let toDay = new Date();
+    let d2=toDay.getDate();
+    let m2=1+toDay.getMonth();
+    let y2 =toDay.getFullYear();
+
+    let month = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+    if(d1>d2){
+        d2=d2 + month[m2-1]
+        m2=m2-1;
+    }
+    if(m1>m2){
+        m2=m2+12;
+        y2 = y2-1;
+    }
+    let d = d2-d1;
+    let m =m2- m1;
+    let y = y2- y1;
+         document.getElementById('age1').innerHTML=`Your Age is ${y} years ${m} Month and ${d} Days`
+        }
+</script>
+</body>
 </html>
